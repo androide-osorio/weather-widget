@@ -20,7 +20,7 @@
       <h3 class="weather-forecast-description"><%= forecast[:today]['icon'] %></h3>
       <hgroup class="weather-forecast-metrics">
         <h4 class="weather-forecast-metric">
-          Humidity: <span class="humidity"><%= forecast[:today]['humidity'].round * 100 %>%</span>
+          Humidity: <span class="humidity"><%= (forecast[:today]['humidity'] * 100).round %>%</span>
         </h4>
         <h4 class="weather-forecast-metric">
           Wind Speed:
