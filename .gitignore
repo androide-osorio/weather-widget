@@ -1,6 +1,9 @@
 # ignore OS files
 .DS_Store
 
+# ignore ENV files
+.env
+
 # Created by https://www.gitignore.io/api/ruby
 
 ### Ruby ###

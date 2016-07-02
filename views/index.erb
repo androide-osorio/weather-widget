@@ -1,0 +1,61 @@
+<% forecast.data.first(3).each do |forecast| %>
+  time: <%= Time.at(forecast['time']).to_s %><br>
+  forecast: <%= forecast['summary'] %><br>
+  icon: <%= forecast['icon'] %><br>
+  Hi: <%= forecast['temperatureMax'] %><br>
+  Lo: <%= forecast['temperatureMin'] %><br>
+  Humidity: <%= forecast['humidity'] %><br>
+  Wind Speed: <%= forecast['windSpeed'] %><br>
+  <br>
+<% end %>
+
+<div class="weather-widget">
+  <div class="weather-widget-box today">
+    <hgroup class="temperatures">
+      <h2 class="temperature-item avg-temperature">25º</h2>
+      <h5 class="temperature-item">Hi <span class="hightest-temperature">34º</span></h5>
+      <h5 class="temperature-item">Lo <span class="lowest-temperature">19º</span></h5>
+    </hgroup>
+
+    <div class="weather-forecast-icon weather-icon big sunny"></div>
+
+    <section class="today-info">
+      <h3 class="weather-forecast-description">Sunny</h3>
+      <hgroup class="weather-forecast-metrics">
+        <h4 class="weather-forecast-metric">
+          Humidity: <span class="humidity">49%</span>
+        </h4>
+        <h4 class="weather-forecast-metric">
+          Wind: <span class="wind-speed">9km/h</span>
+        </h4>
+      </hgroup>
+      <h5 class="forecast-day">Monday</h5>
+    </section>
+  </div>
+
+  <div class="container">
+    <div class="weather-widget-box">
+      <div class="weather-forecast">
+        <div class="weather-forecast-icon weather-icon cloudy"></div>
+        <h5 class="forecast-day">Tuesday</h5>
+      </div>
+
+      <footer class="temperatures">
+        <h5 class="temperature-item">Hi <span class="hightest-temperature">34º</span></h5>
+        <h5 class="temperature-item">Lo <span class="lowest-temperature">19º</span></h5>
+      </footer>
+    </div>
+
+    <div class="weather-widget-box">
+      <div class="weather-forecast">
+        <div class="weather-forecast-icon weather-icon thunderstorm"></div>
+        <h5 class="forecast-day">Wednesday</h5>
+      </div>
+
+      <footer class="temperatures">
+        <h5 class="temperature-item">Hi <span class="hightest-temperature">34º</span></h5>
+        <h5 class="temperature-item">Lo <span class="lowest-temperature">19º</span></h5>
+      </footer>
+    </div>
+  </div>
+</div>

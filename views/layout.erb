@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weather widget</title>
+
+    <meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=no" />
+    <meta name="description" content="some description" />
+    <meta name="keywords" content="some,keywords" />
+    <meta property="og:title" content="Weather widget" />
+    <meta property="og:description" content="some description" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="images/some-thumbnail.jpg" />
+
+    <meta name="twitter:card" content="Weather Widget" />
+    <meta name="twitter:url" content="http://example.com" />
+    <meta name="twitter:title" content="Weather widget" />
+    <meta name="twitter:description" content="some description" />
+    <meta name="twitter:image" content="images/some-thumbnail.jpg" />
+
+    <link rel="stylesheet" href="css/main.css" media="screen" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:400,600" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div class="fullscreen-bg">
+      <video loop="loop" muted volume="0" autoplay="true" poster="images/clouds.png" class="fullscreen-bg__video">
+        <source src="./video/clouds.mp4" type="video/mp4"></source>
+          Video not supported
+      </video>
+    </div>
+    <main class="page-content">
+      <%= yield %>
+    </main>
+  </body>
+</html>
