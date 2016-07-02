@@ -678,11 +678,11 @@ body {
 	background-position: -435px 0;
 }
 
-.weather-icon.partly-cloudy-day {
+/*.weather-icon.partly-cloudy-day {
 	width: 98px;
 	height: 97px;
 	background-position: -542px 0;
-}
+}*/
 
 .weather-icon.light-clouds {
 	width: 115px;
@@ -714,7 +714,7 @@ body {
 	background-position: -1084px 0;
 }
 
-.weather-icon.sunny-fair-clouds {
+.weather-icon.partly-cloudy-day {
 	width: 115px;
 	height: 107px;
 	background-position: -1182px 0;
