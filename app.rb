@@ -1,10 +1,30 @@
 require "sinatra"
-require "./app/weather"
+require './app/weather'
+require './app/ip_location'
 require 'date'
+require 'httparty'
 
 get '/' do
-  weather = Weather.new
-  forecast = weather.get_forecast(4.5255272,-75.6382543)
+  iplocation = IPLocation.new
+  fallback_location = iplocation.current
 
-  return erb :index, locals: { forecast: forecast.daily }
+  forecast = Weather.forecast(
+    fallback_location["latitude"],
+    fallback_location["longitude"]
+  )
+
+  return erb :index, locals: {
+    forecast: {
+      today: forecast.first,
+      week: forecast.drop(1)
+    }
+  }
+end
+
+get '/forecast' do
+  lat = params[:latitude]
+  lon = params[:longitude]
+  forecast = Weather.forecast(lat, lon)
+
+  return forecast.to_json
 end

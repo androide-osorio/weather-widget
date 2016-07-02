@@ -1,61 +1,54 @@
-<% forecast.data.first(3).each do |forecast| %>
-  time: <%= Time.at(forecast['time']).to_s %><br>
-  forecast: <%= forecast['summary'] %><br>
-  icon: <%= forecast['icon'] %><br>
-  Hi: <%= forecast['temperatureMax'] %><br>
-  Lo: <%= forecast['temperatureMin'] %><br>
-  Humidity: <%= forecast['humidity'] %><br>
-  Wind Speed: <%= forecast['windSpeed'] %><br>
-  <br>
-<% end %>
+<%= puts forecast %>
 
 <div class="weather-widget">
   <div class="weather-widget-box today">
     <hgroup class="temperatures">
-      <h2 class="temperature-item avg-temperature">25º</h2>
-      <h5 class="temperature-item">Hi <span class="hightest-temperature">34º</span></h5>
-      <h5 class="temperature-item">Lo <span class="lowest-temperature">19º</span></h5>
+      <h2 class="temperature-item avg-temperature">
+        <%= forecast[:today]['apparentTemperatureMin'].round %>º
+      </h2>
+      <h5 class="temperature-item">
+        Hi <span class="hightest-temperature"><%= forecast[:today]['temperatureMax'].round %>º</span>
+      </h5>
+      <h5 class="temperature-item">
+        Lo <span class="lowest-temperature"><%= forecast[:today]['temperatureMin'].round %>º</span>
+      </h5>
     </hgroup>
 
-    <div class="weather-forecast-icon weather-icon big sunny"></div>
+    <div class="weather-forecast-icon weather-icon big <%= forecast[:today]['icon'] %>"></div>
 
     <section class="today-info">
-      <h3 class="weather-forecast-description">Sunny</h3>
+      <h3 class="weather-forecast-description"><%= forecast[:today]['icon'] %></h3>
       <hgroup class="weather-forecast-metrics">
         <h4 class="weather-forecast-metric">
-          Humidity: <span class="humidity">49%</span>
+          Humidity: <span class="humidity"><%= forecast[:today]['humidity'].round * 100 %>%</span>
         </h4>
         <h4 class="weather-forecast-metric">
-          Wind: <span class="wind-speed">9km/h</span>
+          Wind Speed:
+          <span class="wind-speed">
+            <%= ((forecast[:today]['windSpeed'] * 1000) / 3600).round(1) %>km/h
+          </span>
         </h4>
       </hgroup>
-      <h5 class="forecast-day">Monday</h5>
+      <h5 class="forecast-day"><%=  forecast[:today].time.strftime('%A') %></h5>
     </section>
   </div>
 
   <div class="container">
-    <div class="weather-widget-box">
-      <div class="weather-forecast">
-        <div class="weather-forecast-icon weather-icon cloudy"></div>
-        <h5 class="forecast-day">Tuesday</h5>
+    <% forecast[:week].first(2).each do |day_forecast| %>
+      <div class="weather-widget-box">
+        <div class="weather-forecast">
+          <div class="weather-forecast-icon weather-icon <%= day_forecast.icon %>"></div>
+          <h5 class="forecast-day"><%=  day_forecast.time.strftime('%A') %></h5>
+        </div>
+
+        <footer class="temperatures">
+          <h5 class="temperature-item">
+            Hi <span class="hightest-temperature"><%= day_forecast['temperatureMax'].round %>º</span>
+          </h5>
+          <h5 class="temperature-item">
+            Lo <span class="lowest-temperature"><%= day_forecast['temperatureMin'].round %>º</span>
+          </h5>
+        </footer>
       </div>
-
-      <footer class="temperatures">
-        <h5 class="temperature-item">Hi <span class="hightest-temperature">34º</span></h5>
-        <h5 class="temperature-item">Lo <span class="lowest-temperature">19º</span></h5>
-      </footer>
-    </div>
-
-    <div class="weather-widget-box">
-      <div class="weather-forecast">
-        <div class="weather-forecast-icon weather-icon thunderstorm"></div>
-        <h5 class="forecast-day">Wednesday</h5>
-      </div>
-
-      <footer class="temperatures">
-        <h5 class="temperature-item">Hi <span class="hightest-temperature">34º</span></h5>
-        <h5 class="temperature-item">Lo <span class="lowest-temperature">19º</span></h5>
-      </footer>
-    </div>
-  </div>
+    <% end %>
 </div>

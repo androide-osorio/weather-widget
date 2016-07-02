@@ -8,7 +8,12 @@ GEM
       hashie
       multi_json
     hashie (3.4.4)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
+    json (2.0.1)
     multi_json (1.12.1)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     rack (1.6.4)
     rack-protection (1.5.3)
@@ -24,6 +29,8 @@ PLATFORMS
 
 DEPENDENCIES
   forecast_io
+  httparty
+  json
   sinatra (~> 1.4.7)
 
 RUBY VERSION

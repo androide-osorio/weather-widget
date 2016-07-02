@@ -1,8 +1,10 @@
 require 'forecast_io'
+require 'date'
 
 class Weather
 
-  def initialize()
+  def initialize(options = {})
+    @options = options
     api_key = ENV['WEATHER_API_KEY']
 
     ForecastIO.configure do |config|
@@ -16,5 +18,17 @@ class Weather
       exclude: 'minutely, hourly, flags'
     })
     return forecast
+  end
+
+  def self.forecast(latitude, longitude)
+    weather = Weather.new
+    forecast = weather.get_forecast(latitude, longitude)
+
+    payload = forecast.daily.data.each do |day|
+      puts day['time'].inspect
+      day['time'] = DateTime.strptime(day['time'].to_s,'%s')
+    end
+
+    return payload
   end
 end
