@@ -648,13 +648,13 @@ body {
   max-width: 100%;
 }
 
-.weather-icon.sunny {
+.weather-icon.clear-day {
 	width: 98px;
 	height: 96px;
 	background-position: 0 0;
 }
 
-.weather-icon.clear {
+.weather-icon.clear-night {
 	width: 115px;
 	height: 96px;
 	background-position: -98px 0;
@@ -672,43 +672,43 @@ body {
 	background-position: -325px 0;
 }
 
-.weather-icon.cloudy-night {
+.weather-icon.partly-cloudy-night {
 	width: 107px;
 	height: 96px;
 	background-position: -435px 0;
 }
 
-.weather-icon.cloudy {
+.weather-icon.partly-cloudy-day {
 	width: 98px;
 	height: 97px;
 	background-position: -542px 0;
 }
 
-.weather-icon.light-cloud {
+.weather-icon.light-clouds {
 	width: 115px;
 	height: 97px;
 	background-position: -640px 0;
 }
 
-.weather-icon.rain-cloud {
+.weather-icon.rain-clouds {
 	width: 112px;
 	height: 97px;
 	background-position: -755px 0;
 }
 
-.weather-icon.sunny-cloudy {
+.weather-icon.cloudy {
 	width: 110px;
 	height: 97px;
 	background-position: -867px 0;
 }
 
-.weather-icon.sunny-mostly-cloudy {
+.weather-icon.mostly-cloudy-day {
 	width: 107px;
 	height: 97px;
 	background-position: -977px 0;
 }
 
-.weather-icon.sunny-light-cloud {
+.weather-icon.mostly-cloudy-night {
 	width: 98px;
 	height: 107px;
 	background-position: -1084px 0;
@@ -738,13 +738,13 @@ body {
 	background-position: -1519px 0;
 }
 
-.weather-icon.light-snow {
+.weather-icon.snow {
 	width: 98px;
 	height: 99px;
 	background-position: -1626px 0;
 }
 
-.weather-icon.ice-pellets {
+.weather-icon.sleet {
 	width: 115px;
 	height: 99px;
 	background-position: -1724px 0;
@@ -774,7 +774,7 @@ body {
 	background-position: -2168px 0;
 }
 
-.weather-icon.sunny-fair-clouds-breezy {
+.weather-icon.wind {
 	width: 115px;
 	height: 103px;
 	background-position: -2266px 0;
@@ -786,7 +786,7 @@ body {
 	background-position: -2381px 0;
 }
 
-.weather-icon.cloudy-breezy {
+.weather-icon.fog {
 	width: 110px;
 	height: 103px;
 	background-position: -2493px 0;
