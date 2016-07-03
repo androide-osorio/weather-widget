@@ -1,0 +1,271 @@
+/* --------------------------------------------------------------------------- */
+/* Generated data URIs used for preview purposes only */
+/* Be sure that you replace data URIs with generated images */
+.weather-icon {
+  background: url(/images/weather-icons.png) no-repeat;
+  max-width: 100%;
+
+	&.clear-day {
+		width: 98px;
+		height: 96px;
+		background-position: 0 0;
+	}
+
+	&.clear-night {
+		width: 115px;
+		height: 96px;
+		background-position: -98px 0;
+	}
+
+	&.solar-eclipse {
+		width: 112px;
+		height: 96px;
+		background-position: -213px 0;
+	}
+
+	&.lunar-eclipse {
+		width: 110px;
+		height: 96px;
+		background-position: -325px 0;
+	}
+
+	&.partly-cloudy-night {
+		width: 107px;
+		height: 96px;
+		background-position: -435px 0;
+	}
+
+	/*&.partly-cloudy-day {
+		width: 98px;
+		height: 97px;
+		background-position: -542px 0;
+	}*/
+
+	&.light-clouds {
+		width: 115px;
+		height: 97px;
+		background-position: -640px 0;
+	}
+
+	&.rain-clouds {
+		width: 112px;
+		height: 97px;
+		background-position: -755px 0;
+	}
+
+	&.cloudy {
+		width: 110px;
+		height: 97px;
+		background-position: -867px 0;
+	}
+
+	&.mostly-cloudy-day {
+		width: 107px;
+		height: 97px;
+		background-position: -977px 0;
+	}
+
+	&.mostly-cloudy-night {
+		width: 98px;
+		height: 107px;
+		background-position: -1084px 0;
+	}
+
+	&.partly-cloudy-day {
+		width: 115px;
+		height: 107px;
+		background-position: -1182px 0;
+	}
+
+	&.sunny-light-rain {
+		width: 112px;
+		height: 107px;
+		background-position: -1297px 0;
+	}
+
+	&.rain {
+		width: 110px;
+		height: 107px;
+		background-position: -1409px 0;
+	}
+
+	&.heavy-rain {
+		width: 107px;
+		height: 107px;
+		background-position: -1519px 0;
+	}
+
+	&.snow {
+		width: 98px;
+		height: 99px;
+		background-position: -1626px 0;
+	}
+
+	&.sleet {
+		width: 115px;
+		height: 99px;
+		background-position: -1724px 0;
+	}
+
+	&.heavy-clouds {
+		width: 112px;
+		height: 99px;
+		background-position: -1839px 0;
+	}
+
+	&.thunder {
+		width: 110px;
+		height: 99px;
+		background-position: -1951px 0;
+	}
+
+	&.thunderstorm {
+		width: 107px;
+		height: 99px;
+		background-position: -2061px 0;
+	}
+
+	&.hot {
+		width: 98px;
+		height: 103px;
+		background-position: -2168px 0;
+	}
+
+	&.wind {
+		width: 115px;
+		height: 103px;
+		background-position: -2266px 0;
+	}
+
+	&.tornado {
+		width: 112px;
+		height: 103px;
+		background-position: -2381px 0;
+	}
+
+	&.fog {
+		width: 110px;
+		height: 103px;
+		background-position: -2493px 0;
+	}
+
+	@media only screen and (min-width : 769px) {
+		&.big {
+			background: url(/images/weather-icons@2x.png) no-repeat;
+	    background-size: 2600% 113.413%;
+	    width: 10.5rem !important;
+	    height: 10.5rem !important;
+
+			&.clear-day {
+		  	background-position: 0 0;
+		  }
+
+		  &.clear-night {
+		    background-position: 4.5% 0;
+
+		  }
+
+		  &.solar-eclipse {
+		  	background-position: 8.7% 0;
+		  }
+
+		  &.lunar-eclipse {
+		  	background-position: -551px 0;
+		  }
+
+		  &.partly-cloudy-night {
+		    background-position: -739px 0;
+		  }
+
+		  &.light-cloud {
+		  	background-position: -1095px 0;
+		  }
+
+		  &.rain-cloud {
+		  	background-position: -1280px 0;
+		  }
+
+		  &.sunny-cloudy {
+		  	background-position: -1460px 0;
+		  }
+
+		  &.mostly-cloudy-day {
+		    background-position: -1651px 0;
+		  }
+
+		  &.mostly-cloudy-night {
+		  	background-position: -1084px 0;
+		  }
+
+		  &.partly-cloudy-day {
+		    background-position: -1813px 0;
+		  }
+
+		  &.sunny-mostly-cloudy {
+		  }
+
+		  &.sunny-light-cloud {
+		  }
+
+		  &.sunny-fair-clouds {
+		  	background-position: -2005px 0;
+		  }
+
+		  &.sunny-light-rain {
+		  	background-position: -2191px -20px;
+		  }
+
+		  &.rain {
+		  	background-position: -2380px -20px;
+		  }
+
+		  &.heavy-rain {
+		  	background-position: -2560px -20px;
+		  }
+
+		  &.light-snow {
+		  	background-position: -2726px -20px;
+		  }
+
+		  &.ice-pellets {
+		  	background-position: -2913px -20px;
+		  }
+
+		  &.heavy-clouds {
+		  	background-position: -3097px 0;
+		  }
+
+		  &.thunder {
+		  	background-position: -3289px -20px;
+		  }
+
+		  &.thunderstorm {
+		  	background-position: -3473px -20px;
+		  }
+
+		  &.hot {
+		  	background-position: -3640px 0;
+		  }
+
+		  &.sunny-fair-clouds-breezy {
+		  	background-position: -3824px 0;
+		  }
+
+		  &.tornado {
+		  	background-position: -4006px -20px;
+		  }
+
+		  &.cloudy-breezy {
+		  	background-position: -4198px 0;
+		  }
+		}
+	}
+
+	@media (min--moz-device-pixel-ratio: 1.5),
+	(-webkit-min-device-pixel-ratio: 1.5),
+	(min-device-pixel-ratio: 1.5),
+	(min-resolution: 1.5dppx) {
+  	background: url(../images/weather-icons@2x.png) no-repeat;
+  	background-size: 2603px 107px;
+	}
+}

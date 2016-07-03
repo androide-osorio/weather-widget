@@ -1,0 +1,84 @@
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  /* min-width: 100%; */
+  /* min-height: 100%; */
+  max-width: 1100px;
+  margin: 0 auto;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.page-content {
+  padding: 2rem;
+  width: 23rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.weather-widget {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+@media only screen and (min-width : 769px) {
+  .fullscreen-bg {
+    background: #2b4369 url('../images/clouds.png') center center / contain no-repeat;
+    background-attachment: fixed;
+  }
+
+  .fullscreen-bg__video {
+    /*display: none;*/
+  }
+
+  .page-content {
+    width: auto;
+    margin: 0;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .weather-widget {
+   -ms-flex-wrap: nowrap;
+       flex-wrap: nowrap;
+   -webkit-box-pack: center;
+       -ms-flex-pack: center;
+           justify-content: center;
+   width: 100%;
+  }
+
+  .container {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}

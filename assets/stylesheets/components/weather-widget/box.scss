@@ -1,0 +1,208 @@
+
+.weather-widget-box {
+  margin: 1rem 0;
+  box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.5);
+  max-width: 9rem;
+}
+
+.weather-widget-box .weather-forecast {
+  background: url(/images/today-forecast-box.png) no-repeat;
+  background-size: 100% 100%;
+  color: white;
+  padding: 0.5rem 0.4rem;
+
+  display: -webkit-box;
+
+  display: -ms-flexbox;
+
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weather-widget-box .forecast-day {
+  font-size: 1.3rem; /* 38/16 */
+  line-height: 1em;
+  color: white;
+  font-weight: 300;
+  margin: 0.8125rem 0; /* 13/16 */
+}
+
+.weather-widget-box .temperatures {
+  padding: 0.5rem;
+}
+
+.temperatures .temperature-item {
+  margin: 0;
+  line-height: 1em;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #014466;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+.container .weather-widget-box {
+  width: 47%;
+}
+
+.weather-widget-box.today {
+  background: url(/images/today-forecast-box.png) no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+  min-width: 16.625rem; /* 266/16 */
+  min-height: 16.625rem;
+  max-width: 22.625rem; /* 266/16 */
+
+  width: 100%;
+  height: 23rem;
+
+  position: relative;
+}
+
+.weather-widget-box.today .temperatures {
+  position: absolute;
+  top: 1.8796%; /* 5 / 266 */
+  left: 7.5187%; /* 20/266 */
+  background: transparent;
+}
+
+.weather-widget-box.today .temperature-item {
+  color: #5dffff;
+  margin: 0;
+  line-height: 1em;
+  font-size: 1.35rem; /* 21/16 */
+  font-weight: 300;
+}
+
+.weather-widget-box.today .avg-temperature {
+  font-family: 'Exo 2', Helvetica, sans-serif;
+  font-size: 5.0625rem; /* 81/16 */
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.weather-widget-box.today .weather-forecast-icon {
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+}
+
+.weather-widget-box.today .today-info {
+  padding: 1rem;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.today-info h1,
+.today-info h2,
+.today-info h3,
+.today-info h4,
+.today-info h5,
+.today-info h6 {
+  margin: 0;
+  line-height: 1em;
+}
+
+.today-info .weather-forecast-description {
+  font-family: 'Exo 2', Helvetica, sans-serif;
+  font-size: 3rem;
+  color: #5dffff;
+  line-height: 1em;
+  margin: 1rem 0;
+  text-transform: capitalize;
+}
+
+.today-info .weather-forecast-metrics {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.today-info .weather-forecast-metric {
+  font-family: 'Exo 2', Helvetica, sans-serif;
+  color: white;
+  font-weight: 300;
+}
+
+.today-info .forecast-day {
+  font-size: 2.375rem; /* 38/16 */
+}
+
+@media only screen and (min-width : 769px) {
+
+  .weather-widget-box {
+    margin-right: 1rem;
+  }
+
+  .weather-widget-box.today {
+   -webkit-box-flex: 1;
+       -ms-flex: 1 0 50%;
+           flex: 1 0 50%;
+  }
+
+  .weather-widget-box.today .weather-forecast-icon {
+    position: absolute;
+    right: 0;
+    top: 1rem;
+  }
+}
+
+/*
+ * Desktop Resolutions
+ */
+@media only screen and (min-width: 992px) {
+  .weather-widget {
+    width: auto;
+  }
+
+  .weather-widget-box {
+    width: 10rem !important;
+    min-height: 22.625rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 47%;
+            flex: 1 0 47%;
+    margin-right: 2rem;
+  }
+
+  .weather-widget-box .weather-forecast {
+    height: 80%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
