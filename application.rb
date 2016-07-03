@@ -76,31 +76,55 @@ class WeatherApplication < Sinatra::Base
     }
   end
 
+  # -------------------------------------------------------------------
+  # ====================================
+  # API Routes
+  # ====================================
+
+  # API endpoint for returning the client's current
+  # location using IP based location. This endpoint
+  # is used in case the HTML5 location fails
+  # or is rejected by the client
   get '/my-location' do
+    content_type :json
+
     ip_location_service = IPLocation.new()
     location = ip_location_service.current()
 
-    return {
+    location_res = {
       latitude:  location['latitude'],
       longitude: location['longitude'],
-      city:    { code: location['city_code'], name: location['city_name'] },
-      region:  { code: location['region_code'], name: location['region_name'] },
-      country: { code: location['country_code'], name: location['country_name'] },
+      city:      location['city'],
+      region:    { code: location['region_code'], name: location['region_name'] },
+      country:   { code: location['country_code'], name: location['country_name'] },
     }
+
+    return location_res.to_json
+  end
+
+  # get forecast by mathcing a zipcode
+  # For USA postal codes
+  get %r{/forecast/zipcode/(?<zipcode>\d{5}(-\d{4})?)} do |zipcode|
+    content_type :json
+    return zipcode
+  end
+
+  # get forecast of specific city and country
+  # :country -> must match a 2 letter abbreviation of the country
+  # :city    -> match a city name in slug case (e.g:los-angeles)
+  get %r{/forecast/(?<country>[A-Z]{2})/city/(?<city>[a-z0-9-]+)} do |country, city|
+    content_type :json
+    return { country: country, city: city }.to_json
   end
 
   # get forecast of a specified location
   # by latitude AND longitude
-  get '/forecast/:latitude,:longitude' do
+  get '/forecast/location/:latitude,:longitude' do
+    content_type :json
     lat = params[:latitude]
     lon = params[:longitude]
     forecast = Weather.forecast(lat, lon)
 
     return forecast.to_json
-  end
-
-  # get forecast by mathcing a zipcode (for US and Canada)
-  get '/forecast/:zipcode' do
-
   end
 end
