@@ -18,19 +18,22 @@
     <meta name="twitter:description" content="some description" />
     <meta name="twitter:image" content="images/some-thumbnail.jpg" />
 
-    <link rel="stylesheet" href="css/main.css" media="screen" charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Exo+2:400,600" rel="stylesheet" type="text/css">
+    <%= stylesheet_tag 'https://fonts.googleapis.com/css?family=Exo+2:400,600' %>
+    <%= stylesheet_tag 'application' %>
+    <!--<link href="https://fonts.googleapis.com/css?family=Exo+2:400,600" rel="stylesheet" type="text/css">-->
   </head>
 
   <body>
     <div class="fullscreen-bg">
       <video loop="loop" muted volume="0" autoplay="true" poster="images/clouds.png" class="fullscreen-bg__video">
-        <source src="video/clouds.mp4" type="video/mp4"></source>
+        <source src="<%= asset_path 'videos/clouds.mp4' %>" type="video/mp4"></source>
           Video not supported
       </video>
     </div>
     <main class="page-content">
       <%= yield %>
     </main>
+
+    <%= javascript_tag 'application', :expand => true %>
   </body>
 </html>

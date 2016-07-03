@@ -5,6 +5,10 @@ gem "sinatra", "~>1.4.7"
 # Library for grabbing weather forecasts
 gem 'forecast_io'
 
-# library for geocoding
+# libraries for querying APIs (Yahoo API)
 gem 'json'
 gem 'httparty'
+
+# Asset management and pipeline
+gem 'sprockets'
+gem 'sprockets-helpers'

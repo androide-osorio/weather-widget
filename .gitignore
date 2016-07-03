@@ -4,6 +4,9 @@
 # ignore ENV files
 .env
 
+# ignore vendor files
+/vendor
+
 # Created by https://www.gitignore.io/api/ruby
 
 ### Ruby ###
