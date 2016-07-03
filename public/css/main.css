@@ -862,12 +862,13 @@ body {
     height: 10.5rem !important;
   }
 
-  .weather-icon.big.clear-sunny {
+  .weather-icon.big.clear-day {
   	background-position: 0 0;
   }
 
   .weather-icon.big.clear-night {
-  	background-position: 4.5% 0;
+    background-position: 4.5% 0;
+
   }
 
   .weather-icon.big.solar-eclipse {
@@ -878,12 +879,8 @@ body {
   	background-position: -551px 0;
   }
 
-  .weather-icon.big.cloudy-night {
-  	background-position: -739px 0;
-  }
-
-  .weather-icon.big.cloudy {
-  	background-position: -906px 0;
+  .weather-icon.big.partly-cloudy-night {
+    background-position: -739px 0;
   }
 
   .weather-icon.big.light-cloud {
@@ -898,12 +895,22 @@ body {
   	background-position: -1460px 0;
   }
 
+  .weather-icon.big.mostly-cloudy-day {
+    background-position: -1651px 0;
+  }
+
+  .weather-icon.big.mostly-cloudy-night {
+  	background-position: -1084px 0;
+  }
+
+  .weather-icon.big.partly-cloudy-day {
+    background-position: -1813px 0;
+  }
+
   .weather-icon.big.sunny-mostly-cloudy {
-  	background-position: -1651px 0;
   }
 
   .weather-icon.big.sunny-light-cloud {
-  	background-position: -1813px 0;
   }
 
   .weather-icon.big.sunny-fair-clouds {

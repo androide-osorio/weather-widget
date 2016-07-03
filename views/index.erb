@@ -17,7 +17,7 @@
     <div class="weather-forecast-icon weather-icon big <%= forecast[:today]['icon'] %>"></div>
 
     <section class="today-info">
-      <h3 class="weather-forecast-description">partly cloudy night</h3>
+      <h3 class="weather-forecast-description"><%= forecast[:today]['icon'].gsub('-', ' ') %></h3>
       <hgroup class="weather-forecast-metrics">
         <h4 class="weather-forecast-metric">
           Humidity: <span class="humidity"><%= (forecast[:today]['humidity'] * 100).round %>%</span>
