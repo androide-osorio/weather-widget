@@ -12,3 +12,7 @@ gem 'httparty'
 # Asset management and pipeline
 gem 'sprockets'
 gem 'sprockets-helpers'
+
+# Asset pipeline: preprocessors
+gem 'sass'
+gem 'uglifier'

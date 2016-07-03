@@ -25,7 +25,6 @@ class Weather
     forecast = weather.get_forecast(latitude, longitude)
 
     payload = forecast.daily.data.each do |day|
-      puts day['time'].inspect
       day['time'] = DateTime.strptime(day['time'].to_s,'%s')
     end
 

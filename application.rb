@@ -1,6 +1,6 @@
 require 'sprockets'
-require 'date'
-require 'httparty'
+require 'uglifier'
+require 'sass'
 
 require 'sinatra/base'
 require 'sinatra/sprockets-helpers'
@@ -21,6 +21,12 @@ class WeatherApplication < Sinatra::Base
     sprockets.append_path File.join(root, 'assets', 'stylesheets')
     sprockets.append_path File.join(root, 'assets', 'javascripts')
     sprockets.append_path File.join(root, 'assets', 'images')
+    sprockets.append_path File.join(root, 'assets', 'videos')
+
+
+    # configure Sprockets processors and compressors
+    sprockets.js_compressor  = :uglify
+    sprockets.css_compressor = :scss
 
     # Configure Sprockets::Helpers (if necessary)
     Sprockets::Helpers.configure do |config|
@@ -46,11 +52,12 @@ class WeatherApplication < Sinatra::Base
     # end
   end
 
-  def assets_environment
-    settings.sprockets
-  end
-
   # -------------------------------------------------------------------
+  # get assets
+  get "/assets/*" do
+    env["PATH_INFO"].sub!("/assets", "")
+    settings.sprockets.call(env)
+  end
 
   get '/' do
     iplocation = IPLocation.new
