@@ -1,33 +1,28 @@
-require 'forecast_io'
+require './yahoo'
+require 'httparty'
 require 'date'
 
 class Weather
+  def initialize()
+    Yahoo::Api.configure do |config|
+      config[:apikey] = ENV['YAHOO_CONSUMER_KEY']
+      config[:apisecret] = ENV['YAHOO_CONSUMER_SECRET']
 
-  def initialize(options = {})
-    @options = options
-    api_key = ENV['WEATHER_API_KEY']
-
-    ForecastIO.configure do |config|
-      config.api_key = api_key
+      config[:query] = {
+        format: 'json'
+      }
     end
   end
 
-  def get_forecast(latitude, longitude)
-    forecast = ForecastIO.forecast(latitude, longitude, params: {
-      units: 'si',
-      exclude: 'minutely, hourly, flags'
+  def forecast(place)
+    response = Yahoo::Api.yql(%{
+      select * from weather.forecast
+      where woeid in (
+        select woeid from geo.places(1)
+        where text="#{place}" limit 1
+      ) and u='c'
     })
-    return forecast
-  end
 
-  def self.forecast(latitude, longitude)
-    weather = Weather.new
-    forecast = weather.get_forecast(latitude, longitude)
-
-    payload = forecast.daily.data.each do |day|
-      day['time'] = DateTime.strptime(day['time'].to_s,'%s')
-    end
-
-    return payload
+    return response
   end
 end

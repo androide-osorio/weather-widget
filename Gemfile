@@ -8,6 +8,7 @@ gem 'forecast_io'
 # libraries for querying APIs (Yahoo API)
 gem 'json'
 gem 'httparty'
+gem 'oauth'
 
 # Asset management and pipeline
 gem 'sprockets'

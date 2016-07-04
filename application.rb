@@ -106,7 +106,15 @@ class WeatherApplication < Sinatra::Base
   # For USA postal codes
   get %r{/forecast/zipcode/(?<zipcode>\d{5}(-\d{4})?)} do |zipcode|
     content_type :json
-    return zipcode
+    return { zipcode: zipcode, country: 'United States' }.to_json
+  end
+
+  # get forecast by mathcing a zipcode
+  # For Canada postal codes
+  get %r{/forecast/zipcode/(?<zipcode>[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}-?\d{1}[A-Z]{1}\d{1})} do |zipcode|
+    content_type :json
+
+    return { zipcode: zipcode, country: 'Canada' }.to_json
   end
 
   # get forecast of specific city and country
