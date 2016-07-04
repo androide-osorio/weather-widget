@@ -35,11 +35,11 @@
 		background-position: -435px 0;
 	}
 
-	/*&.partly-cloudy-day {
+	&.partly-cloudy-day {
 		width: 98px;
 		height: 97px;
 		background-position: -542px 0;
-	}*/
+	}
 
 	&.light-clouds {
 		width: 115px;
@@ -89,7 +89,7 @@
 		background-position: -1409px 0;
 	}
 
-	&.heavy-rain {
+	&.showers {
 		width: 107px;
 		height: 107px;
 		background-position: -1519px 0;
@@ -113,13 +113,13 @@
 		background-position: -1839px 0;
 	}
 
-	&.thunder {
+	&.scattered-thunderstorms {
 		width: 110px;
 		height: 99px;
 		background-position: -1951px 0;
 	}
 
-	&.thunderstorm {
+	&.thunderstorms {
 		width: 107px;
 		height: 99px;
 		background-position: -2061px 0;
@@ -153,111 +153,104 @@
 		&.big {
 			background: url(/images/weather-icons@2x.png) no-repeat;
 	    background-size: 2600% 113.413%;
-	    width: 10.5rem !important;
-	    height: 10.5rem !important;
+	    width: 10rem !important;
+	    height: 10rem !important;
 
 			&.clear-day {
-		  	background-position: 0 0;
-		  }
+				background-position: 0 0;
+			}
 
-		  &.clear-night {
-		    background-position: 4.5% 0;
+			&.clear-night {
+				background-position: -309px 0;
+			}
 
-		  }
+			&.solar-eclipse {
+				background-position: -465px 0;
+			}
 
-		  &.solar-eclipse {
-		  	background-position: 8.7% 0;
-		  }
+			&.lunar-eclipse {
+				background-position: -325px 0;
+			}
 
-		  &.lunar-eclipse {
-		  	background-position: -551px 0;
-		  }
+			&.partly-cloudy-night {
+				background-position: -1215px 0;
+			}
 
-		  &.partly-cloudy-night {
-		    background-position: -739px 0;
-		  }
+			&.partly-cloudy-day {
+				background-position: -542px 0;
+			}
 
-		  &.light-cloud {
-		  	background-position: -1095px 0;
-		  }
+			&.light-clouds {
+				background-position: -909px 0;
+			}
 
-		  &.rain-cloud {
-		  	background-position: -1280px 0;
-		  }
+			&.rain-clouds {
+				background-position: -1069px 0;
+			}
 
-		  &.sunny-cloudy {
-		  	background-position: -1460px 0;
-		  }
+			&.cloudy {
+				background-position: -1217px 0;
+			}
 
-		  &.mostly-cloudy-day {
-		    background-position: -1651px 0;
-		  }
+			&.mostly-cloudy-day {
+				background-position: -1372px 0;
+			}
 
-		  &.mostly-cloudy-night {
-		  	background-position: -1084px 0;
-		  }
+			&.mostly-cloudy-night {
+				background-position: -1084px 0;
+			}
 
-		  &.partly-cloudy-day {
-		    background-position: -1813px 0;
-		  }
+			&.partly-cloudy-day {
+				background-position: -1182px 0;
+			}
 
-		  &.sunny-mostly-cloudy {
-		  }
+			&.sunny-light-rain {
+				background-position: -1297px 0;
+			}
 
-		  &.sunny-light-cloud {
-		  }
+			&.rain {
+				background-position: -1409px 0;
+			}
 
-		  &.sunny-fair-clouds {
-		  	background-position: -2005px 0;
-		  }
+			&.showers {
+				background-position: -1519px 0;
+			}
 
-		  &.sunny-light-rain {
-		  	background-position: -2191px -20px;
-		  }
+			&.snow {
+				background-position: -1626px 0;
+			}
 
-		  &.rain {
-		  	background-position: -2380px -20px;
-		  }
+			&.sleet {
+				background-position: -1724px 0;
+			}
 
-		  &.heavy-rain {
-		  	background-position: -2560px -20px;
-		  }
+			&.heavy-clouds {
+				background-position: -1839px 0;
+			}
 
-		  &.light-snow {
-		  	background-position: -2726px -20px;
-		  }
+			&.scattered-thunderstorms {
+				background-position: -1951px 0;
+			}
 
-		  &.ice-pellets {
-		  	background-position: -2913px -20px;
-		  }
+			&.thunderstorms {
+				background-position: -2061px 0;
+			}
 
-		  &.heavy-clouds {
-		  	background-position: -3097px 0;
-		  }
+			&.hot {
+				background-position: -2168px 0;
+			}
 
-		  &.thunder {
-		  	background-position: -3289px -20px;
-		  }
+			&.wind {
+				background-position: -2266px 0;
+			}
 
-		  &.thunderstorm {
-		  	background-position: -3473px -20px;
-		  }
+			&.tornado {
+				background-position: -2381px 0;
+			}
 
-		  &.hot {
-		  	background-position: -3640px 0;
-		  }
-
-		  &.sunny-fair-clouds-breezy {
-		  	background-position: -3824px 0;
-		  }
-
-		  &.tornado {
-		  	background-position: -4006px -20px;
-		  }
-
-		  &.cloudy-breezy {
-		  	background-position: -4198px 0;
-		  }
+			&.fog {
+				background-position: -2493px 0;
+			}
 		}
 	}
 
