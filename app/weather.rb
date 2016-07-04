@@ -47,7 +47,7 @@ class Weather
 
     # make a query to the Yahoo! weather API
     response = @api.yql(
-      get_yql_query(place, @options['item'].joind(','))
+      get_yql_query(place, @options[:items].join(','))
     )
 
     # parse response to a simpler structure and return it
@@ -106,6 +106,7 @@ class Weather
       latitude:  response['item']['lat'],
       longitude: response['item']['long']
     }
+    forecast_response[:date]     = DateTime.now
     forecast_response[:units]    = response['units']
     forecast_response[:location] = response['location'].merge(lat_lng)
 

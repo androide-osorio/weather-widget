@@ -1,35 +1,42 @@
 <%= puts forecast %>
-
 <div class="weather-widget">
   <div class="weather-widget-box today">
     <hgroup class="temperatures">
       <h2 class="temperature-item avg-temperature">
-        <%= forecast[:today]['apparentTemperatureMin'].round %>º
+        <%= forecast[:today][:condition]['temp'] %>º
       </h2>
       <h5 class="temperature-item">
-        Hi <span class="hightest-temperature"><%= forecast[:today]['temperatureMax'].round %>º</span>
+        Hi <span class="hightest-temperature">
+          <%= forecast[:today][:condition]['high'] %>º
+        </span>
       </h5>
       <h5 class="temperature-item">
-        Lo <span class="lowest-temperature"><%= forecast[:today]['temperatureMin'].round %>º</span>
+        Lo <span class="lowest-temperature">
+          <%= forecast[:today][:condition]['low'] %>º
+        </span>
       </h5>
     </hgroup>
 
-    <div class="weather-forecast-icon weather-icon big <%= forecast[:today]['icon'] %>"></div>
+    <div class="weather-forecast-icon
+      weather-icon big
+      <%= slugify(forecast[:today][:condition]['text']) %>"></div>
 
     <section class="today-info">
-      <h3 class="weather-forecast-description"><%= forecast[:today]['icon'].gsub('-', ' ') %></h3>
+      <h3 class="weather-forecast-description"><%= forecast[:today][:condition]['text'] %></h3>
       <hgroup class="weather-forecast-metrics">
         <h4 class="weather-forecast-metric">
-          Humidity: <span class="humidity"><%= (forecast[:today]['humidity'] * 100).round %>%</span>
+          Humidity: <span class="humidity">
+            <%= (forecast[:today][:atmosphere]['humidity']) %>%
+          </span>
         </h4>
         <h4 class="weather-forecast-metric">
           Wind Speed:
           <span class="wind-speed">
-            <%= ((forecast[:today]['windSpeed'] * 1000) / 3600).round(1) %>km/h
+            <%= forecast[:today][:wind]['speed'] %>km/h
           </span>
         </h4>
       </hgroup>
-      <h5 class="forecast-day"><%=  forecast[:today].time.strftime('%A') %></h5>
+      <h5 class="forecast-day"><%= forecast[:date].strftime('%A') %></h5>
     </section>
   </div>
 
@@ -37,16 +44,20 @@
     <% forecast[:week].first(2).each do |day_forecast| %>
       <div class="weather-widget-box">
         <div class="weather-forecast">
-          <div class="weather-forecast-icon weather-icon <%= day_forecast.icon %>"></div>
-          <h5 class="forecast-day"><%=  day_forecast.time.strftime('%A') %></h5>
+          <div class="weather-forecast-icon weather-icon <%= slugify(day_forecast['text']) %>"></div>
+          <h5 class="forecast-day"><%=  Date.parse(day_forecast['date']).strftime('%A') %></h5>
         </div>
 
         <footer class="temperatures">
           <h5 class="temperature-item">
-            Hi <span class="hightest-temperature"><%= day_forecast['temperatureMax'].round %>º</span>
+            Hi <span class="hightest-temperature">
+              <%= day_forecast['high'] %>º
+            </span>
           </h5>
           <h5 class="temperature-item">
-            Lo <span class="lowest-temperature"><%= day_forecast['temperatureMin'].round %>º</span>
+            Lo <span class="lowest-temperature">
+              <%= day_forecast['low'] %>º
+            </span>
           </h5>
         </footer>
       </div>

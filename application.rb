@@ -50,6 +50,10 @@ class WeatherApplication < Sinatra::Base
   helpers do
     include Sprockets::Helpers
 
+    def slugify(str)
+      return str.gsub(' ', '-').downcase
+    end
+
     # Alternative method for telling Sprockets::Helpers which
     # Sprockets environment to use.
     # def assets_environment
