@@ -68,17 +68,12 @@ class WeatherApplication < Sinatra::Base
     iplocation = IPLocation.new
     fallback_location = iplocation.current
 
-    forecast = Weather.forecast(
-      fallback_location["latitude"],
-      fallback_location["longitude"]
-    )
+    latitude = fallback_location["latitude"]
+    longitude = fallback_location["longitude"]
 
-    return erb :index, locals: {
-      forecast: {
-        today: forecast.first,
-        week: forecast.drop(1)
-      }
-    }
+    forecast = settings.weather.forecast("#{latitude},#{longitude}")
+
+    return erb :index, locals: { forecast: forecast }
   end
 
   # -------------------------------------------------------------------
