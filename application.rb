@@ -15,6 +15,7 @@ class WeatherApplication < Sinatra::Base
   set :sprockets, Sprockets::Environment.new(root)
   set :assets_prefix, '/assets'
   set :digest_assets, false
+  set :weather, Weather.new()
 
   configure do
     # Setup Sprockets
@@ -22,7 +23,6 @@ class WeatherApplication < Sinatra::Base
     sprockets.append_path File.join(root, 'assets', 'javascripts')
     sprockets.append_path File.join(root, 'assets', 'images')
     sprockets.append_path File.join(root, 'assets', 'videos')
-
 
     # configure Sprockets processors and compressors
     sprockets.js_compressor  = :uglify
@@ -39,6 +39,11 @@ class WeatherApplication < Sinatra::Base
       # Debug mode automatically sets
       # expand = true, digest = false, manifest = false
       config.debug       = true if development?
+    end
+
+    # setup weather forecaster
+    weather.configure do |options|
+      options[:items] = ['*']
     end
   end
 
@@ -106,32 +111,35 @@ class WeatherApplication < Sinatra::Base
   # For USA postal codes
   get %r{/forecast/zipcode/(?<zipcode>\d{5}(-\d{4})?)} do |zipcode|
     content_type :json
-    return { zipcode: zipcode, country: 'United States' }.to_json
+    forecast = settings.weather.forecast("#{zipcode}")
+
+    return forecast.to_json
   end
 
   # get forecast by mathcing a zipcode
   # For Canada postal codes
   get %r{/forecast/zipcode/(?<zipcode>[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1}-?\d{1}[A-Z]{1}\d{1})} do |zipcode|
     content_type :json
+    forecast = settings.weather.forecast("#{zipcode}")
 
-    return { zipcode: zipcode, country: 'Canada' }.to_json
+    return forecast.to_json
   end
 
   # get forecast of specific city and country
   # :country -> must match a 2 letter abbreviation of the country
   # :city    -> match a city name in slug case (e.g:los-angeles)
-  get %r{/forecast/(?<country>[A-Z]{2})/city/(?<city>[a-z0-9-]+)} do |country, city|
+  get %r{/forecast/country/(?<country>[A-Z]{2})/city/(?<city>[a-z0-9-]+)} do |country, city|
     content_type :json
-    return { country: country, city: city }.to_json
+    forecast = settings.weather.forecast("#{city},#{country}")
+
+    return forecast.to_json
   end
 
   # get forecast of a specified location
   # by latitude AND longitude
-  get '/forecast/location/:latitude,:longitude' do
+  get %r{/forecast/location/(?<latitude>-?\d+\.\d+),(?<longitude>-?\d+\.\d+)} do |latitude, longitude|
     content_type :json
-    lat = params[:latitude]
-    lon = params[:longitude]
-    forecast = Weather.new().forecast("#{lat},#{lon}")
+    forecast = settings.weather.forecast("#{latitude},#{longitude}")
 
     return forecast.to_json
   end
