@@ -1,21 +1,17 @@
-require './yahoo'
-require 'httparty'
+require './app/yahoo'
 require 'date'
 
 class Weather
   def initialize()
-    Yahoo::Api.configure do |config|
-      config[:apikey] = ENV['YAHOO_CONSUMER_KEY']
-      config[:apisecret] = ENV['YAHOO_CONSUMER_SECRET']
-
-      config[:query] = {
-        format: 'json'
-      }
-    end
+    @api = YahooApi.new(format: 'json', diagnostics: false)
   end
 
   def forecast(place)
-    response = Yahoo::Api.yql(%{
+    if place =~ /^(-?\d+\.\d+),\s?(-?\d+\.\d+)$/
+      place = "(#{place})"
+    end
+
+    response = @api.yql(%{
       select * from weather.forecast
       where woeid in (
         select woeid from geo.places(1)

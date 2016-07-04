@@ -131,7 +131,7 @@ class WeatherApplication < Sinatra::Base
     content_type :json
     lat = params[:latitude]
     lon = params[:longitude]
-    forecast = Weather.forecast(lat, lon)
+    forecast = Weather.new().forecast("#{lat},#{lon}")
 
     return forecast.to_json
   end
