@@ -147,13 +147,24 @@
 		width: 110px;
 		height: 103px;
 		background-position: -2493px 0;
+
+
+	}
+
+	&.big {
+		background: url(/images/weather-icons@2x.png) no-repeat;
+		background-size: 2600% 113.413%;
+
+		width: 8rem;
+		height: 8rem;
 	}
 
 	@media only screen and (min-width : 769px) {
+
 		&.big {
 			background: url(/images/weather-icons@2x.png) no-repeat;
 	    background-size: 2600% 113.413%;
-	    width: 10rem !important;
+			width: 10rem !important;
 	    height: 10rem !important;
 
 			&.clear-day {
@@ -258,7 +269,7 @@
 	(-webkit-min-device-pixel-ratio: 1.5),
 	(min-device-pixel-ratio: 1.5),
 	(min-resolution: 1.5dppx) {
-  	background: url(../images/weather-icons@2x.png) no-repeat;
+  	background: url(/images/weather-icons@2x.png) no-repeat;
   	background-size: 2603px 107px;
 	}
 }

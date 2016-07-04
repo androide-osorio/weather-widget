@@ -1,5 +1,12 @@
 <div class="weather-widget">
   <div class="weather-widget-box today">
+    <header class="weather-widget-box-header">
+      <h5>
+        <%= forecast[:location]['city'] %>, <%= forecast[:location]['country'] %>
+      </h5>
+      <button class="open-search-button right" type="button">&nbsp;
+      </button>
+    </header>
     <hgroup class="temperatures">
       <h2 class="temperature-item avg-temperature">
         <%= forecast[:today][:condition]['temp'] %>º
@@ -61,4 +68,15 @@
         </footer>
       </div>
     <% end %>
+  </div>
+
+  <section class="search-popup">
+    <header>
+      <input type="search" name="search" placeholder="Search by city or Zipcode (US and Canada only)">
+      <button class="search-popup-close">&times;</button>
+    </header>
+
+    <section class="search-results">
+    </section>
+  </section>
 </div>
