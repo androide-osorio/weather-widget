@@ -88,7 +88,9 @@
               <span ng-if="place.info.suburb">{{place.info.suburb}},</span>
               <span>{{place.info.city}}</span>
             </h4>
-            <small>{{place.info.region.code}}, {{place.info.country.name}}</small>
+            <small>
+              <span ng-show="place.info.region.code">{{place.info.region.code}},</span> {{place.info.country.name}}
+            </small>
           </a>
         </li>
       </ul>
