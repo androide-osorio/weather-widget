@@ -26,6 +26,8 @@
         window.forecast = <%= forecast.to_json %>;
       </script>
     <% end %>
+    <%= javascript_tag 'application', :expand => true %>
+    
   </head>
 
   <body ng-app="WeatherApp">
@@ -38,6 +40,5 @@
     <main class="page-content">
       <%= yield %>
     </main>
-    <%= javascript_tag 'application', :expand => true %>
   </body>
 </html>
