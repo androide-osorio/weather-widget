@@ -111,12 +111,12 @@ class WeatherApplication < Sinatra::Base
     return location_res.to_json
   end
 
-  get '/location' do
+  get '/places' do
     content_type :json
     query = params['query']
     places = settings.yahoo.find_place(query,[
       'woeid', 'name', 'country',
-      'admin1', 'admin2', 'locality1', 'locality2'
+      'admin1', 'admin2', 'locality1', 'locality2', 'centroid'
     ])
 
     return places.to_json

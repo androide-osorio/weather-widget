@@ -74,7 +74,9 @@
 
   <section class="search-popup" ng-show="WeatherWidgetCtrl.isPopupOpen">
     <header>
-      <input type="search" name="search" placeholder="Search by city or Zipcode (US and Canada only)">
+      <form class="" ng-submit="WeatherWidgetCtrl.findPlace(query)">
+        <input type="search" name="search" placeholder="Search by city or Zipcode (US and Canada only)" ng-model="query">
+      </form>
       <button class="search-popup-close" ng-click="WeatherWidgetCtrl.togglePopup()">&times;</button>
     </header>
 

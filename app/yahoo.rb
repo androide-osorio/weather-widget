@@ -42,6 +42,6 @@ class YahooApi
       where text="#{query}"
     });
 
-    return response.parsed_response
+    return response.parsed_response['query']['results']
   end
 end

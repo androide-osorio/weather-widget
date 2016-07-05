@@ -2,7 +2,44 @@
  * Application services
  */
 
-var App = angular.module('WeatherApp', []);
+var App = angular.module('WeatherApp');
+
+App.factory('PlaceFinder', function(API_ENDPOINTS, $http, $q, GeoPosition) {
+  var apiUrl = API_ENDPOINTS.places;
+
+  var find = function(placeQuery) {
+    return $http.get(apiUrl, { params: { query: placeQuery } })
+      .then(function(response) {
+        return new GeoPosition({
+          id: response.data.place.woeid,
+          coords: {
+            latitude: response.data.place.centroid.latitude,
+            longitude: response.data.place.centroid.longitude
+          },
+          timestamp: new Date(),
+          info: {
+            country: {
+              code: response.data.place.country.code,
+              name: response.data.place.country.content,
+            },
+            region: {
+              code: response.data.place.admin1.code,
+              name: response.data.place.admin1.content,
+            },
+            county: response.data.place.admin2 ? response.data.place.admin2.content : null,
+            city: response.data.place.locality1 ? response.data.place.locality1.content : null,
+            suburb: response.data.place.locality2 ? response.data.place.locality2.content : null
+          }
+        });
+      }, function(error) {
+        return error;
+      });
+  }
+
+  return {
+    find: find
+  };
+});
 
 //---------------------------------------------------------------
 /* --------------------------------- *
