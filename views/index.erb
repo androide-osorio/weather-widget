@@ -81,6 +81,16 @@
     </header>
 
     <section class="search-results">
+      <ul ng-show="places" class="places-list">
+        <li class="place-item" ng-repeat="place in places | filter" id="{{ place.id }}">
+          <h4>
+            <span ng-if="place.info.suburb">{{place.info.suburb}},</span>
+            <span>{{place.info.city}}</span>
+            <span ng-if="place.info.county">, {{place.info.county}} county</span>
+          </h4>
+          <small>{{place.info.region.code}}, {{place.info.country.name}}</small>
+        </li>
+      </ul>
     </section>
   </section>
 </div>

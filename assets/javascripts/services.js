@@ -144,12 +144,12 @@ App.factory('GeoPosition', function() {
   var GeoPosition = function(options, timestamp) {
   	this.latitude  = parseFloat(options.coords.latitude);
   	this.longitude = parseFloat(options.coords.longitude);
-    this.locationInfo = options.info;
+    this.info = options.info;
   	this.timestamp = timestamp;
   };
 
   GeoPosition.prototype.toString = function() {
-  	return this.locationInfo.city.name + ", " + this.locationInfo.state.name + ", " + this.locationInfo.country.name;
+  	return this.info.city.name + ", " + this.info.state.name + ", " + this.info.country.name;
   };
 
   GeoPosition.prototype.setCoords = function(latitude, longitude) {

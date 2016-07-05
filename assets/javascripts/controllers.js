@@ -1,7 +1,7 @@
 
 var App = angular.module('WeatherApp');
 
-App.controller('WeatherWidgetController', function(PlaceFinder) {
+App.controller('WeatherWidgetController', function($scope, PlaceFinder) {
   this.isPopupOen = false;
 
   this.togglePopup = function() {
@@ -9,9 +9,14 @@ App.controller('WeatherWidgetController', function(PlaceFinder) {
   };
 
   this.findPlace = function(placeQuery) {
+    var self = this;
     PlaceFinder.find(placeQuery)
-      .then(function(position) {
-        console.log(position);
+      .then(function(positions) {
+        if(positions instanceof Array) {
+          $scope.places = positions;
+        } else {
+          $scope.places = [positions];
+        }
       }, function(error) {
         console.error(error);
       });
