@@ -15,6 +15,7 @@ class WeatherApplication < Sinatra::Base
   set :sprockets, Sprockets::Environment.new(root)
   set :assets_prefix, '/assets'
   set :digest_assets, false
+  set :yahoo, YahooApi.new(format: 'json', diagnostics: false)
   set :weather, Weather.new()
 
   configure do
@@ -108,6 +109,17 @@ class WeatherApplication < Sinatra::Base
     }
 
     return location_res.to_json
+  end
+
+  get '/location' do
+    content_type :json
+    query = params['query']
+    places = settings.yahoo.find_place(query,[
+      'woeid', 'name', 'country',
+      'admin1', 'admin2', 'locality1', 'locality2'
+    ])
+
+    return places.to_json
   end
 
   # get forecast by mathcing a zipcode

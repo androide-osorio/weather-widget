@@ -28,4 +28,20 @@ class YahooApi
     # make request
     return self.class.get("/v1/public/yql", @options)
   end
+
+  # find a place by a text query
+  def find_place(query, items = ['*'])
+    # add parenteses if a geoposition is provided
+    if query =~ /^(-?\d+\.\d+),\s?(-?\d+\.\d+)$/
+      query = "(#{query})"
+    end
+
+    response = yql(%{
+      select #{items.join(',')}
+      from geo.places(1)
+      where text="#{query}"
+    });
+
+    return response.parsed_response
+  end
 end
