@@ -11,13 +11,13 @@ App.factory('PlaceFinder', function(API_ENDPOINTS, $http, $q, GeoPosition) {
     return $http.get(apiUrl, { params: { query: placeQuery } })
       .then(function(response) {
         return new GeoPosition({
-          id: response.data.place.woeid,
           coords: {
             latitude: response.data.place.centroid.latitude,
             longitude: response.data.place.centroid.longitude
           },
           timestamp: new Date(),
           info: {
+            id: response.data.place.woeid,
             country: {
               code: response.data.place.country.code,
               name: response.data.place.country.content,
@@ -41,6 +41,23 @@ App.factory('PlaceFinder', function(API_ENDPOINTS, $http, $q, GeoPosition) {
   };
 });
 
+App.factory('Weather', function($http, $q, API_ENDPOINTS) {
+
+  var forecastUrl = API_ENDPOINTS.latlong;
+
+  var forecast = function(latitude, longitude) {
+    return $http.get(forecastUrl + '/' + latitude + ',' + longitude)
+      .then(function(forecast) {
+        return forecast;
+      }, function(error) {
+        console.error(error);
+      })
+  };
+
+  return {
+    forecast: forecast
+  }
+});
 //---------------------------------------------------------------
 /* --------------------------------- *
  * IPLocator Class

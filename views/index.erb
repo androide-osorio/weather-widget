@@ -2,7 +2,7 @@
   <div class="weather-widget-box today">
     <header class="weather-widget-box-header">
       <h5>
-        <%= forecast[:location]['city'] %>, <%= forecast[:location]['country'] %>
+        {{ forecast.location.city }}, {{ forecast.location.country }}
       </h5>
       <button class="open-search-button right"
        type="button" ng-click="WeatherWidgetCtrl.togglePopup()">
@@ -11,65 +11,64 @@
     </header>
     <hgroup class="temperatures">
       <h2 class="temperature-item avg-temperature">
-        <%= forecast[:today][:condition]['temp'] %>º
+        {{ forecast.today.condition.temp}}º
       </h2>
       <h5 class="temperature-item">
         Hi <span class="hightest-temperature">
-          <%= forecast[:today][:condition][:high] %>º
+          {{ forecast.today.condition.high}}º
         </span>
       </h5>
       <h5 class="temperature-item">
         Lo <span class="lowest-temperature">
-          <%= forecast[:today][:condition][:low] %>º
+          {{ forecast.today.condition.low }}º
         </span>
       </h5>
     </hgroup>
 
     <div class="weather-forecast-icon
-      weather-icon big
-      <%= slugify(forecast[:today][:condition]['text']) %>"></div>
+      weather-icon big {{ forecast.today.condition.text | slugify }}"></div>
 
     <section class="today-info">
-      <h3 class="weather-forecast-description"><%= forecast[:today][:condition]['text'] %></h3>
+      <h3 class="weather-forecast-description">
+        {{forecast.today.condition.text}}
+      </h3>
       <hgroup class="weather-forecast-metrics">
         <h4 class="weather-forecast-metric">
           Humidity: <span class="humidity">
-            <%= (forecast[:today][:atmosphere]['humidity']) %>%
+            {{forecast.today.atmosphere.humidity}}%
           </span>
         </h4>
         <h4 class="weather-forecast-metric">
           Wind Speed:
           <span class="wind-speed">
-            <%= forecast[:today][:wind]['speed'] %>km/h
+            {{forecast.today.wind.speed}}km/h
           </span>
         </h4>
       </hgroup>
-      <h5 class="forecast-day"><%= forecast[:date].strftime('%A') %></h5>
+      <h5 class="forecast-day">{{forecast.date | amDateFormat: 'dddd' }}</h5>
     </section>
   </div>
 
   <div class="container">
-    <% forecast[:week].first(2).each do |day_forecast| %>
-      <div class="weather-widget-box">
-        <div class="weather-forecast">
-          <div class="weather-forecast-icon weather-icon <%= slugify(day_forecast['text']) %>"></div>
-          <h5 class="forecast-day"><%=  Date.parse(day_forecast['date']).strftime('%A') %></h5>
-        </div>
-
-        <footer class="temperatures">
-          <h5 class="temperature-item">
-            Hi <span class="hightest-temperature">
-              <%= day_forecast['high'] %>º
-            </span>
-          </h5>
-          <h5 class="temperature-item">
-            Lo <span class="lowest-temperature">
-              <%= day_forecast['low'] %>º
-            </span>
-          </h5>
-        </footer>
+    <div class="weather-widget-box" ng-repeat="dayForecast in forecast.week | filter | limitTo:2">
+      <div class="weather-forecast">
+        <div class="weather-forecast-icon weather-icon {{ dayForecast.text | slugify }}"></div>
+        <h5 class="forecast-day">{{dayForecast.date | amDateFormat: 'dddd' }}</h5>
       </div>
-    <% end %>
+
+      <footer class="temperatures">
+        <h5 class="temperature-item">
+          Hi <span class="hightest-temperature">
+            {{dayForecast.high}}º
+          </span>
+        </h5>
+        <h5 class="temperature-item">
+          Lo <span class="lowest-temperature">
+            {{dayForecast.low}}º
+          </span>
+        </h5>
+      </footer>
+    </div>
   </div>
 
   <section class="search-popup" ng-show="WeatherWidgetCtrl.isPopupOpen">
@@ -82,15 +81,35 @@
 
     <section class="search-results">
       <ul ng-show="places" class="places-list">
-        <li class="place-item" ng-repeat="place in places | filter" id="{{ place.id }}">
-          <h4>
-            <span ng-if="place.info.suburb">{{place.info.suburb}},</span>
-            <span>{{place.info.city}}</span>
-            <span ng-if="place.info.county">, {{place.info.county}} county</span>
-          </h4>
-          <small>{{place.info.region.code}}, {{place.info.country.name}}</small>
+        <li class="place-item"
+        ng-repeat="place in places | filter" id="{{ place.info.id }}">
+          <a ng-click="WeatherWidgetCtrl.getForecast(place.latitude, place.longitude)">
+            <h4>
+              <span ng-if="place.info.suburb">{{place.info.suburb}},</span>
+              <span>{{place.info.city}}</span>
+            </h4>
+            <small>{{place.info.region.code}}, {{place.info.country.name}}</small>
+          </a>
         </li>
       </ul>
+
+      <hgroup class="popup-message" ng-hide="places">
+        <h2>Type your town's name or a zipcode above</h2>
+        <p>The results will be shown in this space</p>
+      </hgroup>
+
+      <hgroup class="popup-message" ng-show="places.length === 0">
+        <h2>
+          We don't have the forecast for nowhere :(
+        </h2>
+        <h5>
+          We couldn't find the place you were looking for.<br>
+          Please, try again.
+        </h5>
+        <p>
+          You search by city name, suburb or zip code (for US and Canada)
+        </p>
+      </hgroup>
     </section>
   </section>
 </div>
