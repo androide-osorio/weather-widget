@@ -5,7 +5,7 @@
   background: url(/images/weather-icons.png) no-repeat;
   max-width: 100%;
 
-	&.clear-day {
+	&.sunny {
 		width: 98px;
 		height: 96px;
 		background-position: 0 0;
@@ -35,7 +35,7 @@
 		background-position: -435px 0;
 	}
 
-	&.partly-cloudy-day {
+	&.partly-cloudy {
 		width: 98px;
 		height: 97px;
 		background-position: -542px 0;
@@ -59,7 +59,7 @@
 		background-position: -867px 0;
 	}
 
-	&.mostly-cloudy-day {
+	&.mostly-cloudy {
 		width: 107px;
 		height: 97px;
 		background-position: -977px 0;
@@ -71,7 +71,7 @@
 		background-position: -1084px 0;
 	}
 
-	&.partly-cloudy-day {
+	&.mostly-sunny {
 		width: 115px;
 		height: 107px;
 		background-position: -1182px 0;
@@ -131,7 +131,7 @@
 		background-position: -2168px 0;
 	}
 
-	&.wind {
+	&.breezy {
 		width: 115px;
 		height: 103px;
 		background-position: -2266px 0;
@@ -167,7 +167,7 @@
 			width: 10rem !important;
 	    height: 10rem !important;
 
-			&.clear-day {
+			&.sunny {
 				background-position: 0 0;
 			}
 
@@ -187,8 +187,8 @@
 				background-position: -1215px 0;
 			}
 
-			&.partly-cloudy-day {
-				background-position: -542px 0;
+			&.partly-cloudy {
+				background-position: -1222px 0;
 			}
 
 			&.light-clouds {
@@ -203,16 +203,12 @@
 				background-position: -1217px 0;
 			}
 
-			&.mostly-cloudy-day {
+			&.mostly-cloudy {
 				background-position: -1372px 0;
 			}
 
 			&.mostly-cloudy-night {
 				background-position: -1084px 0;
-			}
-
-			&.partly-cloudy-day {
-				background-position: -1182px 0;
 			}
 
 			&.sunny-light-rain {
@@ -251,8 +247,8 @@
 				background-position: -2168px 0;
 			}
 
-			&.wind {
-				background-position: -2266px 0;
+			&.breezy {
+				background-position: -3183px 0;
 			}
 
 			&.tornado {

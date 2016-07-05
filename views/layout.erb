@@ -21,9 +21,11 @@
     <%= stylesheet_tag 'https://fonts.googleapis.com/css?family=Exo+2:400,600' %>
     <%= stylesheet_tag 'application' %>
     <!--<link href="https://fonts.googleapis.com/css?family=Exo+2:400,600" rel="stylesheet" type="text/css">-->
-    <script type="text/javascript">
-      window.forecast = <%= forecast.to_json %>;
-    </script>
+    <% if forecast %>
+      <script type="text/javascript">
+        window.forecast = <%= forecast.to_json %>;
+      </script>
+    <% end %>
   </head>
 
   <body ng-app="WeatherApp">
