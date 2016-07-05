@@ -1,10 +1,12 @@
-<div class="weather-widget">
+<div class="weather-widget" ng-controller="WeatherWidgetController as WeatherWidgetCtrl">
   <div class="weather-widget-box today">
     <header class="weather-widget-box-header">
       <h5>
         <%= forecast[:location]['city'] %>, <%= forecast[:location]['country'] %>
       </h5>
-      <button class="open-search-button right" type="button">&nbsp;
+      <button class="open-search-button right"
+       type="button" ng-click="WeatherWidgetCtrl.togglePopup()">
+        &nbsp;
       </button>
     </header>
     <hgroup class="temperatures">
@@ -70,10 +72,10 @@
     <% end %>
   </div>
 
-  <section class="search-popup">
+  <section class="search-popup" ng-show="WeatherWidgetCtrl.isPopupOpen">
     <header>
       <input type="search" name="search" placeholder="Search by city or Zipcode (US and Canada only)">
-      <button class="search-popup-close">&times;</button>
+      <button class="search-popup-close" ng-click="WeatherWidgetCtrl.togglePopup()">&times;</button>
     </header>
 
     <section class="search-results">

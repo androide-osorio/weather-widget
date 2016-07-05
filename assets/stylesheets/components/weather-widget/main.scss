@@ -8,6 +8,11 @@
     right: 0;
     width: 100%;
     height: 100%;
+    transition:0.5s linear ease-in-out;
+    opacity:1;
+    transform-origin: 50% 50%;
+    transform: scale(1);
+
 
     background: rgba(0,150,214,1);
     background: -moz-radial-gradient(center, ellipse cover, rgba(0,150,214,0.7) 0%, rgba(0,82,136,0.7) 100%);
@@ -19,6 +24,13 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0096d6', endColorstr='#005288', GradientType=1 );
     padding: 1.5rem;
     box-sizing: border-box;
+
+    &.ng-hide {
+      transition:0.5s linear ease-in-out;
+      opacity:0;
+      transform-origin: 50% 50%;
+      transform: scale(0);
+    }
 
     @media only screen and (min-width : 769px) {
       position: absolute;

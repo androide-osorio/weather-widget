@@ -23,7 +23,7 @@
     <!--<link href="https://fonts.googleapis.com/css?family=Exo+2:400,600" rel="stylesheet" type="text/css">-->
   </head>
 
-  <body>
+  <body ng-app="WeatherApp">
     <div class="fullscreen-bg">
       <video loop="loop" muted volume="0" autoplay="true" poster="images/clouds.png" class="fullscreen-bg__video">
         <source src="<%= asset_path 'videos/clouds.mp4' %>" type="video/mp4"></source>
@@ -33,7 +33,6 @@
     <main class="page-content">
       <%= yield %>
     </main>
-
     <%= javascript_tag 'application', :expand => true %>
   </body>
 </html>
