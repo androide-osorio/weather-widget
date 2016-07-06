@@ -16,3 +16,6 @@ gem 'sprockets-helpers'
 # Asset pipeline: preprocessors
 gem 'sass'
 gem 'uglifier'
+
+# application server
+gem 'unicorn'

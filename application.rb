@@ -17,6 +17,7 @@ class WeatherApplication < Sinatra::Base
   set :digest_assets, false
   set :yahoo, YahooApi.new(format: 'json', diagnostics: false)
   set :weather, Weather.new()
+  set :location, 'Los Angeles, CA, United States'
 
   configure do
     # Setup Sprockets
@@ -70,13 +71,7 @@ class WeatherApplication < Sinatra::Base
   end
 
   get '/' do
-    iplocation = IPLocation.new
-    fallback_location = iplocation.current(request.ip)
-
-    latitude = fallback_location["latitude"]
-    longitude = fallback_location["longitude"]
-
-    forecast = settings.weather.forecast("#{latitude},#{longitude}")
+    forecast = settings.weather.forecast(settings.location)
 
     return erb :index, locals: { forecast: forecast }
   end

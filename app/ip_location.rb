@@ -9,7 +9,7 @@ class IPLocation
   # get the current client's geographical location,
   # using and IP lookup, and a json format
   # @return [HTTParty:Response]   a response with the client's location, if available
-  def current(ip)
+  def current(ip = '')
     self.class.get("/json/#{ip}")
   end
 end
