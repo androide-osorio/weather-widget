@@ -81,10 +81,6 @@ class WeatherApplication < Sinatra::Base
     return erb :index, locals: { forecast: forecast }
   end
 
-  get '/icons' do
-    return erb :weather_icons
-  end
-
   # -------------------------------------------------------------------
   # ====================================
   # API Routes

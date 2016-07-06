@@ -4,7 +4,8 @@
 
 var App = angular.module('WeatherApp');
 
-App.factory('PlaceFinder', function(API_ENDPOINTS, $http, $q, GeoPosition) {
+App.factory('PlaceFinder',
+['API_ENDPOINTS', '$http', '$q', 'GeoPosition', function(API_ENDPOINTS, $http, $q, GeoPosition) {
   var apiUrl = API_ENDPOINTS.places;
 
   var find = function(placeQuery) {
@@ -39,9 +40,9 @@ App.factory('PlaceFinder', function(API_ENDPOINTS, $http, $q, GeoPosition) {
   return {
     find: find
   };
-});
+}]);
 
-App.factory('Weather', function($http, $q, API_ENDPOINTS) {
+App.factory('Weather', ['$http', '$q', 'API_ENDPOINTS', function($http, $q, API_ENDPOINTS) {
 
   var forecastUrl = API_ENDPOINTS.latlong;
 
@@ -57,12 +58,13 @@ App.factory('Weather', function($http, $q, API_ENDPOINTS) {
   return {
     forecast: forecast
   }
-});
+}]);
+
 //---------------------------------------------------------------
 /* --------------------------------- *
  * IPLocator Class
  * --------------------------------- */
-App.factory('IPLocator', function(GEO_IP_URL, $http) {
+App.factory('IPLocator', ['GEO_IP_URL', '$http', function(GEO_IP_URL, $http) {
   var IPLocator = function(url) {
     this.url = url;
   };
@@ -82,13 +84,13 @@ App.factory('IPLocator', function(GEO_IP_URL, $http) {
   };
 
   return IPLocator;
-});
+}]);
 
 //---------------------------------------------------------------
 /* --------------------------------- *
  * GeoLocator Class
  * --------------------------------- */
-App.factory('Geolocation', function(GeoPosition, IPLocator, $q) {
+App.factory('Geolocation', ['GeoPosition', 'IPLocator', '$q', function(GeoPosition, IPLocator, $q) {
   var geolocationSupport = 'undefined' !== typeof(navigator.geolocation) && navigator.geolocation !== null;
 
   var Geolocation = function() {
@@ -150,7 +152,7 @@ App.factory('Geolocation', function(GeoPosition, IPLocator, $q) {
   Geolocation.prototype.getGeolocationProvider = function() {
     return this.locator;
   };
-});
+}]);
 
 //---------------------------------------------------------------
 /* --------------------------------- *

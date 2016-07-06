@@ -1,7 +1,8 @@
 
 var App = angular.module('WeatherApp');
 
-App.controller('WeatherWidgetController', function($scope, PlaceFinder, Weather, currentForecast) {
+App.controller('WeatherWidgetController',
+['$scope', 'PlaceFinder', 'Weather', 'currentForecast', function($scope, PlaceFinder, Weather, currentForecast) {
   this.isPopupOen = false;
   $scope.forecast = currentForecast;
 
@@ -30,4 +31,4 @@ App.controller('WeatherWidgetController', function($scope, PlaceFinder, Weather,
         console.error(error);
       });
   }
-});
+}]);
