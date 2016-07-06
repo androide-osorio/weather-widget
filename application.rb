@@ -71,7 +71,7 @@ class WeatherApplication < Sinatra::Base
 
   get '/' do
     iplocation = IPLocation.new
-    fallback_location = iplocation.current
+    fallback_location = iplocation.current(request.ip)
 
     latitude = fallback_location["latitude"]
     longitude = fallback_location["longitude"]
