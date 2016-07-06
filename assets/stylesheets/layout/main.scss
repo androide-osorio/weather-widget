@@ -6,20 +6,29 @@
   left: 0;
   overflow: hidden;
   z-index: -100;
+  background: #2b4369;
 }
 
 .fullscreen-bg__video {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
-  width: auto;
-  height: auto;
-  /* min-width: 100%; */
-  /* min-height: 100%; */
   max-width: 1100px;
-  margin: 0 auto;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  z-index: -100;
+  -webkit-transform: translate(-50%, -50%) rotate(90deg);
+          transform: translate(-50%, -50%) rotate(90deg);
+  /*background: url('/images/clouds.png') no-repeat;*/
+  background-size: cover;
+  -webkit-transition: 1s opacity;
+  transition: 1s opacity;
+  width: 189%;
+  height: auto;
+
+  @media only screen and (min-width: 769px) {
+    width: auto;
+    -webkit-transform: translate(-50%, -50%) rotate(0);
+            transform: translate(-50%, -50%) rotate(0);
+  }
 }
 
 .page-content {
@@ -44,7 +53,7 @@
 
 @media only screen and (min-width : 769px) {
   .fullscreen-bg {
-    background: #2b4369 url('../images/clouds.png') center center / contain no-repeat;
+    /*background: #2b4369 url('/images/clouds.png') center center / contain no-repeat;*/
     background-attachment: fixed;
   }
 

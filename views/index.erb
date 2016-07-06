@@ -4,10 +4,10 @@
       <h5>
         {{ forecast.location.city }}, {{ forecast.location.country }}
       </h5>
-      <button class="open-search-button right"
+      <!--<button class="open-search-button right"
        type="button" ng-click="WeatherWidgetCtrl.togglePopup()">
         &nbsp;
-      </button>
+      </button>-->
     </header>
     <hgroup class="temperatures">
       <h2 class="temperature-item avg-temperature">
@@ -54,6 +54,7 @@
       <div class="weather-forecast">
         <div class="weather-forecast-icon weather-icon {{ dayForecast.text | slugify }}"></div>
         <h5 class="forecast-day">{{dayForecast.date | amDateFormat: 'dddd' }}</h5>
+        <h5 class="forecast-description">{{ dayForecast.text }}</h5>
       </div>
 
       <footer class="temperatures">

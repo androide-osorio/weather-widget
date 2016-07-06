@@ -21,18 +21,20 @@
     <%= stylesheet_tag 'https://fonts.googleapis.com/css?family=Exo+2:400,600' %>
     <%= stylesheet_tag 'application' %>
     <!--<link href="https://fonts.googleapis.com/css?family=Exo+2:400,600" rel="stylesheet" type="text/css">-->
-    <% if forecast %>
+    <% if defined? forecast %>
       <script type="text/javascript">
         window.forecast = <%= forecast.to_json %>;
       </script>
     <% end %>
     <%= javascript_tag 'application', :expand => true %>
-    
+
   </head>
 
   <body ng-app="WeatherApp">
     <div class="fullscreen-bg">
-      <video loop="loop" muted volume="0" autoplay="true" poster="images/clouds.png" class="fullscreen-bg__video">
+      <video loop autoplay poster="images/clouds.png" class="fullscreen-bg__video">
+        <source src="<%= asset_path 'videos/clouds.webm' %>" type="video/webm"></source>
+        <source src="<%= asset_path 'videos/clouds.ogv' %>" type="video/ogv"></source>
         <source src="<%= asset_path 'videos/clouds.mp4' %>" type="video/mp4"></source>
           Video not supported
       </video>
