@@ -7,26 +7,27 @@
 
   @media only screen and (min-width: 769px) {
     width: 10rem !important;
+    display: flex;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    flex-flow: column nowrap;
     -ms-flex-flow: column nowrap;
-        flex-flow: column nowrap;
+    flex: 1 0 47%;
     -webkit-box-flex: 1;
-        -ms-flex: 1 0 47%;
-            flex: 1 0 47%;
+      -ms-flex: 1 0 47%;
 
 
     .weather-forecast {
       height: 80%;
+      display: flex;
       display: -webkit-box;
       display: -ms-flexbox;
-      display: flex;
+
+      flex-flow: column nowrap;
       -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
+      justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
       min-height: 16rem;
     }
   }
@@ -38,18 +39,16 @@
     padding: 0.5rem 0.4rem;
     min-height: 14rem;
 
-    display: -webkit-box;
-
-    display: -ms-flexbox;
-
     display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    flex-direction: column;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column;
+    align-items: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center;
   }
 
   .forecast-day {
@@ -178,12 +177,12 @@
       }
 
       .weather-forecast-metrics {
+        display: flex;
         display: -webkit-box;
         display: -ms-flexbox;
-        display: flex;
+        justify-content: space-between;
         -webkit-box-pack: justify;
             -ms-flex-pack: justify;
-                justify-content: space-between;
       }
 
       .weather-forecast-metric {
@@ -200,22 +199,20 @@
 }
 
 .container {
+  display: flex;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  justify-content: space-between;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex: 1 0 auto;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
 
   @media only screen and (min-width: 769px) {
+    justify-content: flex-start;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
-            justify-content: flex-start;
   }
 
   .weather-widget-box {
