@@ -22,3 +22,4 @@ worker_processes 2
 
 # Time-out
 timeout 30
+preload_app true
