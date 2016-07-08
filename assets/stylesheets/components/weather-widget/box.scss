@@ -102,6 +102,11 @@
       margin-right: 2rem;
     }
 
+    @media only screen and (aspect-ratio: 1/1) {
+      margin-right: 0.625rem;
+
+    }
+
     .weather-widget-box-header {
       position: absolute;
       top: 15px;
@@ -154,7 +159,7 @@
     }
 
     .today-info {
-      padding: 1rem;
+      padding: 0.6rem;
 
       position: absolute;
       bottom: 0;
@@ -190,6 +195,11 @@
         font-family: 'Exo 2', Helvetica, sans-serif;
         color: white;
         font-weight: 300;
+        margin-left: 10px;
+
+        &:first-child {
+          margin-left: 0;
+        }
       }
 
       .forecast-day {
@@ -218,6 +228,10 @@
 
   .weather-widget-box {
     width: 47%;
+
+    @media only screen and (aspect-ratio: 1/1) {
+      margin-right: 0.625rem;
+    }
 
     @media only screen and (min-width: 769px) {
       margin-right: 2rem;
