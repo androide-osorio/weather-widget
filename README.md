@@ -9,7 +9,7 @@ Features
 * Geolocation support built in, with fallback to IP based location
 * Ability to change the widget's forecast location through the UI
 * Fully developed API for fetching information about the current weather and week forecasts.
-* Integration with Yahoo! Weather.
+* Integration with Yahoo! Weather API.
 
 System Requirements
 ---
@@ -20,15 +20,16 @@ Make sure you have the following software installed on your server:
 | Ruby        	| >= 2.0.0  	| Specific for the OS. More information [here](https://www.ruby-lang.org/en/documentation/installation/) 	|
 | Bundler gem 	| >= 1.12.x 	| `gem install bundle`                         	|
 | rackup Gem  	| >= 1.3    	| `gem install rackup`                         	|
+| Apache or nginx  	| N/A   	| specific for the OS.                        	|
 
 Frameworks and APIs used
 ---
-* Sinatra framework for ruby.
-* Yahoo Weather API for weather forecasts
-* freegeoip.net for IP-Based location
-* SPRockets for asset pipeline processing
-* SASS for CSS preprocessing
-
+* [Sinatra](http://www.sinatrarb.com/) framework for ruby.
+* [Yahoo Weather API](https://developer.yahoo.com/weather/) for weather forecasts.
+* [freegeoip.net](http://freegeoip.net/?q=181.55.146.41) for IP-Based geolocation.
+* [SProckets](https://github.com/rails/sprockets) for asset pipeline processing.
+* [SASS](http://sass-lang.com/) for CSS preprocessing.
+* [Unicorn](https://unicorn.bogomips.org/) as the RACK HTTP server.
 Running the application
 ---
 Clone this repository by Running:
@@ -41,9 +42,9 @@ Next, `cd` into the project's folder that you just cloned and run
 $ bundle install
 ```
 
-To run a local server where you can see the project up and running, use the command:
+To run a local development server where you can see the project up and running, use the command:
 ```bash
-$ bundle exec rackup config.ru -p 5000
+$ bundle exec unicorn -p 5000 -c ./config/unicorn_development.rb
 ```
 This will open a test server in `http://localhost:5000`.
 
@@ -66,22 +67,27 @@ To have this application running in a production server, you'll first need to ha
 * Ubuntu 14.04+
 
 ### Installing production software
-Install nginx in your server by running:
+Make sure you first install ruby into the server by running:
+```bash
+$ sudo apt-get upgrade
+$ sudo apt-get update
+$ sudo apt-get install ruby-full
+```
+Verify these commands were successful by running `ruby -v`. Next, install nginx in your server by running:
 ```bash
 $ apt-get install nginx
 ```
 
 Install the Unicorn gem by running:
 ```bash
-$gem install Unicorn
+$ gem install unicorn
 ```
 
-Once you have installed this software, please open the `unicorn.rb` file and configure the correct routes and names the Unicorn server will use (in the provided file, replace `my-app` for the application's name):
+Once you have installed this software, please open the `config/unicorn_production.rb` file and configure the correct routes and names the Unicorn server will use (in the provided file, replace `/path/to/whatever` for the appropiate path):
 
 ```ruby
 # Set the working application directory
-# working_directory "/path/to/your/app"
-working_directory "/var/www/my-app" # REPLACE THIS!
+working_directory "/var/www/weather-widget" # REPLACE THIS!
 ```
 
 Next, configure the nginx web server by creating a new configuration file:
@@ -98,7 +104,8 @@ Configure the nxginx server accordingly (`/etc/nginx/conf.d/default.conf`), so i
 ```nginx
 upstream app {
     # Path to Unicorn SOCK file, as defined previously
-    server unix:<unicorn socket defined in unicorn.rb> fail_timeout=0;
+    # ("listen" call in ./config/unicorn_production.rb, line 13)
+    server unix:<unicorn socket defined in unicorn_production.rb> fail_timeout=0;
 }
 
 server {
@@ -108,7 +115,7 @@ server {
     server_name localhost;
 
     # Application root, as defined previously
-    root /path/to/project/public;
+    root /path/to/weather-widget/public;
 
     try_files $uri/index.html $uri @app;
 
@@ -129,7 +136,7 @@ server {
 You can now start the unicorn process by running:
 ```bash
 # Make sure that you are inside the application directory
-unicorn -c unicorn.rb -D
+unicorn -c ./config/unicorn_production.rb -D
 ```
 
 And restart nginx to refresh the new configuration:
@@ -137,9 +144,9 @@ And restart nginx to refresh the new configuration:
 $ service nginx restart
 ```
 
-There are a lot of other ways to deploying to production depending on your configuration. You can find more information in [this great article](https://www.digitalocean.com/community/tutorials/how-to-deploy-sinatra-based-ruby-web-applications-on-ubuntu-13)
+There are a lot of other ways to deploying to production depending on your configuration. You can find more information in [this great article](https://www.digitalocean.com/community/tutorials/how-to-deploy-sinatra-based-ruby-web-applications-on-ubuntu-13), where you can see the above configuration in more detail and how to configure an Apache server as well.
 
 Authors
 ---
-Graphic and UX design by Hernando Botero
-Development by Andrés Osorio
+* Graphic and UX design by Hernando Botero.
+* Development by Andrés Osorio.
